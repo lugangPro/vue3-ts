@@ -12,11 +12,11 @@
         <el-menu-item v-if="!item.children" :index="item.path">
           <template #title><i :class="item.icon"></i>{{item.name}}</template>
         </el-menu-item>
-        <el-submenu v-else :index="item.path">
+        <el-submenu v-else :index="item.id">
           <template #title><i :class="item.icon"></i>{{item.name}}</template>
           <template v-for="x in item.children" :key="x.id">
             <el-menu-item v-if="!x.children" :index="x.path">{{x.name}}</el-menu-item>
-            <el-submenu v-else :index="x.path">
+            <el-submenu v-else :index="x.id">
               <template #title>{{x.name}}</template>
               <el-menu-item v-for="p in x.children" :key="p.id" :index="p.path">{{p.name}}</el-menu-item>
             </el-submenu>
@@ -42,7 +42,6 @@ export default defineComponent({
       }, {
         name: '菜单2',
         id: '2',
-        path: '/index2',
         icon: 'el-icon-message',
         children: [
           {
@@ -58,13 +57,11 @@ export default defineComponent({
       }, {
         name: '菜单3',
         id: '3',
-        path: '/index5',
         icon: 'el-icon-data-analysis',
         children: [
           {
             name: '菜单3-1',
             id: '301',
-            path: '/index6',
             children: [
               {
                 name: '菜单3-1-1',
